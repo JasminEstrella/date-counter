@@ -1,9 +1,64 @@
 import './App.css';
+import { useState } from 'react';
 
 function App() {
   return (
-    <div></div>
+    <div className='container'>
+      <Counter />
+    </div>
   );
 }
+
+
+function Counter () {
+
+  const [step, setStep] = useState(1);
+  const [count, setCounter] = useState(0);
+  const today = new Date();
+  today.setDate(today.getDate() + count)
+  console.log(today.toDateString())
+
+
+  function increaseSteps() {
+    setStep((step) => step + 1)
+  }
+
+  function decreaseSteps() {
+    setStep((step) => step - 1)
+  }
+
+  function increaseCounter() {
+    setCounter((count) => count + step);
+  }
+
+  function decreaseCounter() {
+    setCounter((count) => count - step);
+  }
+
+  return ( 
+    <>
+    <div className='steps'>
+      <button onClick={decreaseSteps}> - </button>
+      <p> Steps: { step } </p>
+      <button onClick={increaseSteps}> + </button>
+    </div>
+
+    <div className='counter'>
+      <button onClick={decreaseCounter}> - </button>
+      <p> Count: { count } </p>
+      <button onClick={increaseCounter}> + </button>
+    </div>
+
+    <div className='date-display'>
+      <p>
+        { count > 0 && `${count} ${count === 1 ? "day" : "days"} from today is ${ today.toDateString() }` }
+        { count < 0 && `${count * -1 } ${(count * -1) === 1 ? "day" : "days"} ago was ${ today.toDateString() }`}
+        { count === 0 && `Today is ${ today.toDateString() } `  }
+      </p>
+    </div>
+    </>
+  )
+}
+
 
 export default App;
