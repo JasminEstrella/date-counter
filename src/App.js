@@ -16,8 +16,6 @@ function Counter () {
   const [count, setCounter] = useState(0);
   const today = new Date();
   today.setDate(today.getDate() + count)
-  console.log(today.toDateString())
-
 
   function increaseSteps() {
     setStep((step) => step + 1)
@@ -51,9 +49,14 @@ function Counter () {
 
     <div className='date-display'>
       <p>
-        { count > 0 && `${count} ${count === 1 ? "day" : "days"} from today is ${ today.toDateString() }` }
+        {/* { count > 0 && `${count} ${count === 1 ? "day" : "days"} from today is ${ today.toDateString() }` }
         { count < 0 && `${count * -1 } ${(count * -1) === 1 ? "day" : "days"} ago was ${ today.toDateString() }`}
-        { count === 0 && `Today is ${ today.toDateString() } `  }
+        { count === 0 && `Today is ${ today.toDateString() } `  } */}
+        {/* {`${count}`} */}
+        { 
+          count === 0 ? `Today is ${ today.toDateString() } ` :
+          `${Math.abs(count) === 1 ? `${Math.abs(count)} day` : `${Math.abs(count)} days`} ${count < 0 ? 'ago was ' : 'from today is '} ${ today.toDateString()}`
+        }
       </p>
     </div>
     </>
