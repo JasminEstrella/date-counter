@@ -33,27 +33,17 @@ function Counter () {
     setCounter((count) => count - step);
   }
 
-  function handleReset() {
-    setStep(1);
-    setCounter(0);
-  }
-
   return ( 
     <>
     <div className='steps'>
-      <input type='range' min='0' max='10' value={step} onChange={(e) =>setStep(Number(e.target.value))}/> {step}
-    </div>
-    
-    {/* <div className='steps'>
       <button onClick={decreaseSteps}> - </button>
       <p> Steps: { step } </p>
       <button onClick={increaseSteps}> + </button>
-    </div> */}
+    </div>
 
     <div className='counter'>
       <button onClick={decreaseCounter}> - </button>
-      {/* <p> Count: { count } </p> */}
-      <input type='number' value={count} onChange={(e) => setCounter(Number(e.target.value))} />
+      <p> Count: { count } </p>
       <button onClick={increaseCounter}> + </button>
     </div>
 
@@ -70,11 +60,6 @@ function Counter () {
         }
       </p>
     </div>
-
-    { (count !== 0 || step !== 1) ? <div>
-      <button onClick={handleReset}>Reset</button>
-    </div> : null
-    }
     </>
   )
 }
